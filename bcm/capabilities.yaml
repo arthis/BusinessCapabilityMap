@@ -56,7 +56,7 @@ capabilities:
   description: Déclaration, instruction et indemnisation / prise en charge des sinistres et prestations.
   owner: Gestion Sinistres / Prestations
   adrs: []
-- id: CAP.BSP.PRS.000
+- id: CAP.BSP.006
   name: Interaction & Service Client
   level: L1
   zoning: BUSINESS SERVICE PRODUCTION
@@ -351,7 +351,7 @@ capabilities:
   description: Déclinaison des orientations stratégiques, objectifs et trajectoires pluriannuelles.
   owner: Direction Générale
   adrs: []
-- id: CAP.STE.PIP.000
+- id: CAP.STE.PPE.000
   name: Pilotage de la performance (KPI / tableaux de bord)
   level: L2
   parent: CAP.STE.001
@@ -375,7 +375,7 @@ capabilities:
   description: Construction budgétaire, suivi réalisé/forecast, analyse des écarts.
   owner: Contrôle de Gestion
   adrs: []
-- id: CAP.STE.PIP.000
+- id: CAP.STE.PPO.000
   name: Pilotage du portefeuille (offres / garanties / populations)
   level: L2
   parent: CAP.STE.001
@@ -754,7 +754,7 @@ capabilities:
 - id: CAP.BSP.TDA.000
   name: Traitement des demandes & actes de service
   level: L2
-  parent: CAP.BSP.PRS.000
+  parent: CAP.BSP.006
   zoning: BUSINESS SERVICE PRODUCTION
   description: Demandes courantes et complexes, suivi SLA, coordination (souvent BPM/GED).
   owner: Service Client
@@ -762,7 +762,7 @@ capabilities:
 - id: CAP.BSP.RLM.000
   name: Réclamations, litiges & médiation
   level: L2
-  parent: CAP.BSP.PRS.000
+  parent: CAP.BSP.006
   zoning: BUSINESS SERVICE PRODUCTION
   description: Traitement opérationnel des réclamations/litiges et médiation (gouvernance côté Conformité).
   owner: Service Client
@@ -770,7 +770,7 @@ capabilities:
 - id: CAP.BSP.AAS.000
   name: Assistance & accompagnement sociétaire
   level: L2
-  parent: CAP.BSP.PRS.000
+  parent: CAP.BSP.006
   zoning: BUSINESS SERVICE PRODUCTION
   description: Assistance santé/prévoyance, accompagnement, coordination partenaires (réseaux de soins…).
   owner: Service Client
