@@ -1,0 +1,5 @@
+mappings:
+  - capability_id: CAP.CUST.020
+    data_domains: ["Customer", "Consent"]
+  - capability_id: CAP.ORD.020
+    data_domains: ["Order", "Fulfillment"]

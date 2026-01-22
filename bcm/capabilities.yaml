@@ -1,0 +1,825 @@
+meta:
+  bcm_name: BCM Urbanisation
+  version: 0.2.0
+  last_updated: '2026-01-22'
+  owners:
+  - EA / Urbanisation
+  - Business Architecture
+  - Urbanist
+capabilities:
+- id: CAP.STE.001
+  name: Pilotage d'Entreprise
+  level: L1
+  zoning: STEERING
+  description: Capacités permettant le pilotage global de l'entreprise.
+  owner: Direction Générale
+  adrs: []
+- id: CAP.STE.002
+  name: Conformité
+  level: L1
+  zoning: STEERING
+  description: Gestion de la conformité réglementaire, du contrôle interne et du respect des obligations légales.
+  owner: Conformité / Risques
+  adrs: []
+- id: CAP.BSP.001
+  name: Produits & Tarification
+  level: L1
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Définition, paramétrage et évolution des produits d'assurance (règles + gouvernance + cycle de vie).
+  owner: Marketing Produit / Actuariat
+  adrs: []
+- id: CAP.BSP.002
+  name: Canaux & Intermédiation
+  level: L1
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Capacités métier SI pour opérer la distribution (réseaux, intermédiaires, conventions, règles, pilotage).
+  owner: Distribution
+  adrs: []
+- id: CAP.BSP.003
+  name: Souscription & Acceptation du Risque
+  level: L1
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Analyse, décision et formalisation du risque (jusqu'à décision et dossier prêt à émettre).
+  owner: Souscription
+  adrs: []
+- id: CAP.BSP.004
+  name: Administration des Contrats
+  level: L1
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Tenue et exécution des contrats dans le temps (à partir de l’émission / prise d’effet).
+  owner: Gestion Contrats
+  adrs: []
+- id: CAP.BSP.005
+  name: Sinistres & Prestations
+  level: L1
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Déclaration, instruction et indemnisation / prise en charge des sinistres et prestations.
+  owner: Gestion Sinistres / Prestations
+  adrs: []
+- id: CAP.BSP.PRS.000
+  name: Interaction & Service Client
+  level: L1
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Gestion des interactions, demandes, réclamations et assistance / accompagnement.
+  owner: Service Client
+  adrs: []
+- id: CAP.BSP.007
+  name: Cotisations & Recouvrement
+  level: L1
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Gestion des flux de cotisations, encaissements, rejets/relances et recouvrement.
+  owner: Gestion Cotisations
+  adrs: []
+- id: CAP.BSP.008
+  name: Finance & Actuariat
+  level: L1
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Capacités financières, comptables (métier), prudentielles et actuarielles.
+  owner: Finance / Actuariat
+  adrs: []
+- id: CAP.SUP.001
+  name: Cybersecurity & Security Operations
+  level: L1
+  zoning: SUPPORT
+  description: Protection cyber, gestion d’incidents, surveillance, IAM et politiques d’accès.
+  owner: RSSI / SecOps
+  adrs: []
+- id: CAP.SUP.002
+  name: Gestion des Prestataires
+  level: L1
+  zoning: SUPPORT
+  description: Sélection, pilotage et suivi des fournisseurs et partenaires externes.
+  owner: Achats / Vendor Management
+  adrs: []
+- id: CAP.SUP.003
+  name: Comptabilité & clôture
+  level: L1
+  zoning: SUPPORT
+  description: Tenue des comptes, écritures, clôtures et déclaratifs comptables.
+  owner: Direction Financière
+  adrs: []
+- id: CAP.SUP.004
+  name: Interopérabilité
+  level: L1
+  zoning: SUPPORT
+  description: Transformation et correspondance des données entre systèmes hétérogènes (intégration interne).
+  owner: Architecture / Intégration
+  adrs: []
+- id: CAP.SUP.005
+  name: Gestion documentaire
+  level: L1
+  zoning: SUPPORT
+  description: Stockage, indexation, recherche et archivage des documents (incl. archivage probatoire).
+  owner: Records Management
+  adrs: []
+- id: CAP.SUP.006
+  name: Workflow / BPM / Case Management
+  level: L1
+  zoning: SUPPORT
+  description: Orchestration des processus, gestion des flux de travail et pilotage des dossiers complexes.
+  owner: Process Office / DSI
+  adrs: []
+- id: CAP.SUP.007
+  name: Gestion des communications / éditique
+  level: L1
+  zoning: SUPPORT
+  description: Composition, génération, diffusion et suivi des communications sortantes et production documentaire.
+  owner: Communication Client / Editique
+  adrs: []
+- id: CAP.REF.001
+  name: Référentiel Personne
+  level: L1
+  zoning: REFERENTIAL
+  description: Gestion centralisée des données d’identité et d’état civil des personnes physiques et morales.
+  owner: Data Office
+  adrs: []
+- id: CAP.REF.002
+  name: Référentiel Adresse
+  level: L1
+  zoning: REFERENTIAL
+  description: Normalisation, validation et géolocalisation des adresses postales.
+  owner: Data Office
+  adrs: []
+- id: CAP.REF.003
+  name: Référentiel Climat
+  level: L1
+  zoning: REFERENTIAL
+  description: Mise à disposition des données météorologiques et climatiques historiques et prévisionnelles.
+  owner: Data Office
+  adrs: []
+- id: CAP.REF.004
+  name: Référentiel Véhicules
+  level: L1
+  zoning: REFERENTIAL
+  description: Données techniques et administratives des véhicules (marques, modèles, caractéristiques).
+  owner: Data Office
+  adrs: []
+- id: CAP.REF.005
+  name: Référentiel bancaire
+  level: L1
+  zoning: REFERENTIAL
+  description: Coordonnées bancaires (IBAN/BIC) et validation RIB.
+  owner: Data Office / Paiements
+  adrs: []
+- id: CAP.REF.006
+  name: Référentiel organisation
+  level: L1
+  zoning: REFERENTIAL
+  description: Structure organisationnelle interne (entités, services, hiérarchies).
+  owner: RH / Organisation
+  adrs: []
+- id: CAP.REF.007
+  name: Référentiel Contrat / Police
+  level: L1
+  zoning: REFERENTIAL
+  description: Gestion centralisée des contrats/polices, couvertures, garanties et historique.
+  owner: Data Office / Contrats
+  adrs: []
+- id: CAP.REF.008
+  name: Référentiel Produit / Garanties / Tarification
+  level: L1
+  zoning: REFERENTIAL
+  description: Gestion centralisée des définitions produit, garanties, options et règles de tarification (transversal).
+  owner: Data Office / Produit
+  adrs: []
+- id: CAP.B2B.001
+  name: Onboarding & gouvernance partenaires
+  level: L1
+  zoning: B2B EXCHANGE
+  description: Référencement partenaires, habilitations B2B, SLA, conventions et responsabilités.
+  owner: Écosystème / Partenariats
+  adrs: []
+- id: CAP.B2B.002
+  name: Hub d'échanges partenaires
+  level: L1
+  zoning: B2B EXCHANGE
+  description: Routage, transformation, enrichissement et orchestration des flux B2B (focalisé écosystème).
+  owner: DSI / Intégration
+  adrs: []
+- id: CAP.B2B.003
+  name: API externes & portail partenaire
+  level: L1
+  zoning: B2B EXCHANGE
+  description: API externes, clés, quotas, portail développeur, versioning et compatibilité.
+  owner: API Management
+  adrs: []
+- id: CAP.B2B.004
+  name: Échanges délégataires
+  level: L1
+  zoning: B2B EXCHANGE
+  description: Délégation sinistres/prestations/cotisations, contrôles, reporting et réversibilité.
+  owner: Écosystème / Délégations
+  adrs: []
+- id: CAP.B2B.005
+  name: Échanges santé / tiers payant
+  level: L1
+  zoning: B2B EXCHANGE
+  description: PEC, factures, remboursements, flux normalisés (NOEMIE si applicable).
+  owner: Santé / Partenariats
+  adrs: []
+- id: CAP.B2B.006
+  name: Échanges intermédiation
+  level: L1
+  zoning: B2B EXCHANGE
+  description: Devis, souscriptions, avenants, commissions et suivi portefeuille via partenaires.
+  owner: Distribution / Partenariats
+  adrs: []
+- id: CAP.B2B.007
+  name: Échanges financiers
+  level: L1
+  zoning: B2B EXCHANGE
+  description: Banques (SEPA, rejets, mandats), paiements et rapprochements.
+  owner: Finance / Paiements
+  adrs: []
+- id: CAP.B2B.008
+  name: Échanges réglementaires
+  level: L1
+  zoning: B2B EXCHANGE
+  description: Dépôts, déclaratifs, preuves d’audit et supervision selon obligations.
+  owner: Conformité / Reporting
+  adrs: []
+- id: CAP.B2B.009
+  name: Traçabilité, sécurité des flux
+  level: L1
+  zoning: B2B EXCHANGE
+  description: Journalisation, preuve, horodatage, conformité des échanges, chiffrement, signature.
+  owner: RSSI / Écosystème
+  adrs: []
+- id: CAP.CHN.001
+  name: Expérience omnicanale & parcours
+  level: L1
+  zoning: CHANNELS
+  description: Cohérence des parcours et orchestration front-to-back (web/mobile/agence/téléphone).
+  owner: Digital
+  adrs: []
+- id: CAP.CHN.002
+  name: Portails adhérent & entreprise
+  level: L1
+  zoning: CHANNELS
+  description: Espace adhérent (contrat, remboursements, attestations) et espace entreprise (collectif, reporting).
+  owner: Digital
+  adrs: []
+- id: CAP.CHN.003
+  name: Poste de travail conseiller / front-office
+  level: L1
+  zoning: CHANNELS
+  description: Poste conseiller et assisted selling (devis, souscription, modification).
+  owner: Distribution
+  adrs: []
+- id: CAP.CHN.004
+  name: Acquisition digitale
+  level: L1
+  zoning: CHANNELS
+  description: Tunnel devis → souscription, formulaires, simulation, collecte de pièces.
+  owner: Digital Acquisition
+  adrs: []
+- id: CAP.CHN.005
+  name: Centre de contact
+  level: L1
+  zoning: CHANNELS
+  description: Couplage téléphonie-informatique, routage, scripts, base de connaissances, qualité de service.
+  owner: Relation Client
+  adrs: []
+- id: CAP.CHN.006
+  name: Engagement & notifications
+  level: L1
+  zoning: CHANNELS
+  description: Notifications email/SMS/push et communications transactionnelles côté expérience.
+  owner: Digital / CRM
+  adrs: []
+- id: CAP.CHN.007
+  name: Mesure des parcours
+  level: L1
+  zoning: CHANNELS
+  description: Tracking conversion/abandon, feedback et NPS/CSAT (si utilisé).
+  owner: Digital Analytics
+  adrs: []
+- id: CAP.DAT.001
+  name: Gouvernance des données
+  level: L1
+  zoning: DATA & ANALYTICS
+  description: Rôles (owner/steward), politiques, glossaire/dictionnaire, cycle de vie.
+  owner: Data Office
+  adrs: []
+- id: CAP.DAT.002
+  name: Ingestion & alimentation data
+  level: L1
+  zoning: DATA & ANALYTICS
+  description: Collecte batch/stream depuis le SI et partenaires, orchestration des pipelines analytiques.
+  owner: Data Engineering
+  adrs: []
+- id: CAP.DAT.003
+  name: Plateformes de données
+  level: L1
+  zoning: DATA & ANALYTICS
+  description: Data lake/warehouse, zones (raw/curated/serving), archivage et rétention.
+  owner: Data Platform
+  adrs: []
+- id: CAP.DAT.004
+  name: BI & reporting
+  level: L1
+  zoning: DATA & ANALYTICS
+  description: Reporting réglementaire (si rattaché au data), tableaux de bord métier, self-service BI.
+  owner: BI
+  adrs: []
+- id: CAP.DAT.005
+  name: Analytics avancé & IA
+  level: L1
+  zoning: DATA & ANALYTICS
+  description: Scoring fraude/churn/propension, prévisions, industrialisation des modèles.
+  owner: Data Science
+  adrs: []
+- id: CAP.DAT.006
+  name: Partage & accès aux données
+  level: L1
+  zoning: DATA & ANALYTICS
+  description: Catalogue, API data/extractions contrôlées, habilitations data.
+  owner: Data Office
+  adrs: []
+- id: CAP.DAT.007
+  name: Protection & conformité des données
+  level: L1
+  zoning: DATA & ANALYTICS
+  description: Classification, anonymisation/pseudonymisation, consentements côté data, contrôle des usages.
+  owner: DPO / Data Office
+  adrs: []
+- id: CAP.STE.DSO.000
+  name: Définition de la stratégie et des objectifs
+  level: L2
+  parent: CAP.STE.001
+  zoning: STEERING
+  description: Déclinaison des orientations stratégiques, objectifs et trajectoires pluriannuelles.
+  owner: Direction Générale
+  adrs: []
+- id: CAP.STE.PIP.000
+  name: Pilotage de la performance (KPI / tableaux de bord)
+  level: L2
+  parent: CAP.STE.001
+  zoning: STEERING
+  description: Indicateurs métier, qualité de service, pilotage coûts/productivité.
+  owner: DG / Contrôle de gestion
+  adrs: []
+- id: CAP.STE.PLO.000
+  name: Pilotage de l'activité et des opérations
+  level: L2
+  parent: CAP.STE.001
+  zoning: STEERING
+  description: Suivi charge/capacité, qualité opérationnelle, amélioration continue.
+  owner: Direction des Opérations
+  adrs: []
+- id: CAP.STE.CGP.000
+  name: Contrôle de gestion et pilotage budgétaire
+  level: L2
+  parent: CAP.STE.001
+  zoning: STEERING
+  description: Construction budgétaire, suivi réalisé/forecast, analyse des écarts.
+  owner: Contrôle de Gestion
+  adrs: []
+- id: CAP.STE.PIP.000
+  name: Pilotage du portefeuille (offres / garanties / populations)
+  level: L2
+  parent: CAP.STE.001
+  zoning: STEERING
+  description: Suivi des offres/populations, segmentation individuel/collectif, rentabilité.
+  owner: Marketing / Actuariat
+  adrs: []
+- id: CAP.STE.PRG.000
+  name: Pilotage du risque global (ERM / risques opérationnels)
+  level: L2
+  parent: CAP.STE.001
+  zoning: STEERING
+  description: Cartographie des risques, suivi risques opérationnels et incidents majeurs.
+  owner: Risk Management
+  adrs: []
+- id: CAP.STE.PIT.000
+  name: Pilotage de la transformation
+  level: L2
+  parent: CAP.STE.001
+  zoning: STEERING
+  description: Portefeuille projets, arbitrage/priorisation, suivi des bénéfices, conduite du changement.
+  owner: Transformation
+  adrs: []
+- id: CAP.STE.PRP.000
+  name: Pilotage de la relation partenaires
+  level: L2
+  parent: CAP.STE.001
+  zoning: STEERING
+  description: Pilotage délégations, prestataires, performance contractuelle (mutuelle/écosystème).
+  owner: Partenariats
+  adrs: []
+- id: CAP.STE.VRI.000
+  name: Veille réglementaire et interprétation
+  level: L2
+  parent: CAP.STE.002
+  zoning: STEERING
+  description: Identification des textes applicables, analyse d’impact, diffusion interne.
+  owner: Conformité
+  adrs: []
+- id: CAP.STE.GOP.000
+  name: Gestion des obligations prudentielles
+  level: L2
+  parent: CAP.STE.002
+  zoning: STEERING
+  description: Exigences de solvabilité/fonds propres, justification et documentation.
+  owner: Conformité / Finance
+  adrs: []
+- id: CAP.STE.GCI.000
+  name: Gestion du contrôle interne
+  level: L2
+  parent: CAP.STE.002
+  zoning: STEERING
+  description: Dispositifs et plan de contrôle, suivi des résultats/anomalies.
+  owner: Contrôle Interne
+  adrs: []
+- id: CAP.STE.GAI.000
+  name: Gestion des audits et inspections
+  level: L2
+  parent: CAP.STE.002
+  zoning: STEERING
+  description: Audits internes/externes, préparation et réponses aux inspections (ACPR…).
+  owner: Conformité / Audit
+  adrs: []
+- id: CAP.STE.CRP.000
+  name: Conformité RGPD & protection des données
+  level: L2
+  parent: CAP.STE.002
+  zoning: STEERING
+  description: Registre, droits, AIPD/DPIA, gouvernance des consentements.
+  owner: DPO
+  adrs: []
+- id: CAP.STE.CLC.000
+  name: Conformité lutte contre la fraude & abus
+  level: L2
+  parent: CAP.STE.002
+  zoning: STEERING
+  description: Détection/instruction, dispositifs antifraude, coopération partenaires/délégataires.
+  owner: Conformité / Antifraude
+  adrs: []
+- id: CAP.STE.CLF.000
+  name: Conformité LCB-FT (si applicable)
+  level: L2
+  parent: CAP.STE.002
+  zoning: STEERING
+  description: KYC, screening, alerting et reporting LCB-FT selon activités.
+  owner: Conformité
+  adrs: []
+- id: CAP.STE.GPN.000
+  name: Gestion des politiques, normes et référentiels
+  level: L2
+  parent: CAP.STE.002
+  zoning: STEERING
+  description: Politiques internes, procédures, traçabilité et versioning.
+  owner: Conformité
+  adrs: []
+- id: CAP.STE.GRR.000
+  name: Gestion des réclamations réglementaires et médiation
+  level: L2
+  parent: CAP.STE.002
+  zoning: STEERING
+  description: Suivi obligations de réponse, reporting conformité, médiation/litiges.
+  owner: Conformité
+  adrs: []
+- id: CAP.STE.GSC.000
+  name: GRC SI / conformité sécurité
+  level: L2
+  parent: CAP.STE.002
+  zoning: STEERING
+  description: Risques SI/cyber, conformité réglementaire (ex. DORA), audits sécurité et remédiation.
+  owner: RSSI
+  adrs: []
+- id: CAP.BSP.CSP.000
+  name: Conception et structuration des produits
+  level: L2
+  parent: CAP.BSP.001
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Définition des offres, construction garanties/options, règles d’éligibilité.
+  owner: Marketing Produit
+  adrs: []
+- id: CAP.BSP.PRP.000
+  name: Paramétrage des règles produits et garanties
+  level: L2
+  parent: CAP.BSP.001
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Couverture (franchises/plafonds/exclusions), règles contractuelles, versioning produit.
+  owner: Gestion Produit
+  adrs: []
+- id: CAP.BSP.CMM.000
+  name: Construction et maintenance des modèles tarifaires
+  level: L2
+  parent: CAP.BSP.001
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Variables/segmentation, remises/majorations, individuel vs collectif.
+  owner: Actuariat
+  adrs: []
+- id: CAP.BSP.PGC.000
+  name: Publication et gouvernance du catalogue produit
+  level: L2
+  parent: CAP.BSP.001
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Mise à disposition, gestion versions en production, traçabilité/validation/cycle de vie.
+  owner: Produit / Gouvernance
+  adrs: []
+- id: CAP.BSP.GRI.000
+  name: Gestion des réseaux et intermédiaires
+  level: L2
+  parent: CAP.BSP.002
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Référencement, organisation commerciale, habilitations métier (business).
+  owner: Distribution
+  adrs: []
+- id: CAP.BSP.GCC.000
+  name: Gestion des conventions et conditions commerciales
+  level: L2
+  parent: CAP.BSP.002
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Conventions de distribution, conditions spécifiques, dérogations commerciales.
+  owner: Distribution
+  adrs: []
+- id: CAP.BSP.DOR.000
+  name: Distribution des offres et des règles par canal
+  level: L2
+  parent: CAP.BSP.002
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Catalogue vendable, contraintes d’éligibilité par canal, campagnes de mise à dispo.
+  owner: Distribution / Produit
+  adrs: []
+- id: CAP.BSP.GAV.000
+  name: Gestion des actes de vente intermédiés
+  level: L2
+  parent: CAP.BSP.002
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Suivi devis/souscriptions via intermédiaire, demandes (modifs/résiliations initiées), traçabilité.
+  owner: Distribution
+  adrs: []
+- id: CAP.BSP.CRI.000
+  name: Commissions, rémunérations et incentives
+  level: L2
+  parent: CAP.BSP.002
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Calcul commissions/rétrocessions, primes/incentives, régularisations et litiges.
+  owner: Distribution / Finance
+  adrs: []
+- id: CAP.BSP.PDC.000
+  name: Pilotage de la distribution & conformité commerciale
+  level: L2
+  parent: CAP.BSP.002
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Performance par canal, coûts acquisition, contrôles (devoir de conseil, conformité de commercialisation).
+  owner: Distribution / Conformité
+  adrs: []
+- id: CAP.BSP.QUD.000
+  name: Qualification de la demande
+  level: L2
+  parent: CAP.BSP.003
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Recueil du besoin, qualification contexte, complétude initiale du dossier.
+  owner: Souscription
+  adrs: []
+- id: CAP.BSP.ÉVR.000
+  name: Évaluation du risque
+  level: L2
+  parent: CAP.BSP.003
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Analyse profil/exposition, collecte pièces, éligibilité/contrôles, médical (si applicable), collectif.
+  owner: Souscription
+  adrs: []
+- id: CAP.BSP.CTS.000
+  name: Calcul de tarif & simulation
+  level: L2
+  parent: CAP.BSP.003
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Application règles tarifaires, simulations, remises/conditions commerciales (consomme référentiel produit).
+  owner: Souscription / Actuariat
+  adrs: []
+- id: CAP.BSP.DÉS.000
+  name: Décision de souscription
+  level: L2
+  parent: CAP.BSP.003
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Acceptation/refus, exclusions/surprimes/conditions particulières, délégations d’autorisation.
+  owner: Souscription
+  adrs: []
+- id: CAP.BSP.FOL.000
+  name: Formalisation de l'engagement
+  level: L2
+  parent: CAP.BSP.003
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Dossier final, conditions particulières pré-contractuelles, consentement/signature.
+  owner: Souscription
+  adrs: []
+- id: CAP.BSP.CSS.000
+  name: Contrôles & sécurisation de la souscription
+  level: L2
+  parent: CAP.BSP.003
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Contrôles cohérence, anti-fraude à l’entrée, conformité (KYC/LCB-FT si applicable, RGPD).
+  owner: Souscription / Conformité
+  adrs: []
+- id: CAP.BSP.ÉMV.000
+  name: Émission & mise en vigueur du contrat
+  level: L2
+  parent: CAP.BSP.004
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Émission/activation, prise d’effet, documents contractuels initiaux.
+  owner: Gestion Contrats
+  adrs: []
+- id: CAP.BSP.TEC.000
+  name: Tenue du contrat
+  level: L2
+  parent: CAP.BSP.004
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Maintien des données de police, gestion garanties/options, historisation des versions.
+  owner: Gestion Contrats
+  adrs: []
+- id: CAP.BSP.MOC.000
+  name: Mouvements contractuels (avenants / modifications)
+  level: L2
+  parent: CAP.BSP.004
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Changements de couverture et administratifs, traçabilité.
+  owner: Gestion Contrats
+  adrs: []
+- id: CAP.BSP.ADD.000
+  name: Adhésions & droits (bénéficiaires / populations)
+  level: L2
+  parent: CAP.BSP.004
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Affiliation/radiation, ayants droit/bénéficiaires, ouverture/fermeture des droits.
+  owner: Gestion Contrats
+  adrs: []
+- id: CAP.BSP.RSR.000
+  name: Renouvellement, suspension & résiliation
+  level: L2
+  parent: CAP.BSP.004
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Renouvellements, suspensions, résiliations/clôture.
+  owner: Gestion Contrats
+  adrs: []
+- id: CAP.BSP.SCP.000
+  name: Services contractuels & preuves
+  level: L2
+  parent: CAP.BSP.004
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Attestations/justificatifs, mise à disposition (selfcare/partenaires), audit trail, conservation probatoire.
+  owner: Gestion Contrats
+  adrs: []
+- id: CAP.BSP.DSP.000
+  name: Déclaration du sinistre / de la prestation
+  level: L2
+  parent: CAP.BSP.005
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Capter et qualifier un événement garanti (multicanal), rattacher au contrat.
+  owner: Gestion Sinistres / Prestations
+  adrs: []
+- id: CAP.BSP.OED.000
+  name: Ouverture & Enregistrement du dossier
+  level: L2
+  parent: CAP.BSP.005
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Création/structuration du dossier, typage, attribution initiale.
+  owner: Gestion Sinistres / Prestations
+  adrs: []
+- id: CAP.BSP.IND.000
+  name: Instruction du dossier
+  level: L2
+  parent: CAP.BSP.005
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Analyse garanties, vérification droits, collecte pièces, décisions intermédiaires.
+  owner: Gestion Sinistres / Prestations
+  adrs: []
+- id: CAP.BSP.ÉDP.000
+  name: Évaluation des dommages / prestations
+  level: L2
+  parent: CAP.BSP.005
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Estimation financière/technique, expertises, réévaluations.
+  owner: Gestion Sinistres / Prestations
+  adrs: []
+- id: CAP.BSP.INR.000
+  name: Indemnisation / Règlement
+  level: L2
+  parent: CAP.BSP.005
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Calcul montants, ordonnancement paiements, suivi règlements.
+  owner: Gestion Sinistres / Prestations
+  adrs: []
+- id: CAP.BSP.PTP.000
+  name: Pilotage des tiers & prestataires
+  level: L2
+  parent: CAP.BSP.005
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Gestion des intervenants externes (experts, réparateurs, professionnels de santé, réseaux).
+  owner: Gestion Sinistres / Prestations
+  adrs: []
+- id: CAP.BSP.RES.000
+  name: Recours & subrogation
+  level: L2
+  parent: CAP.BSP.005
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Identification des recours, suivi procédures, encaissement.
+  owner: Gestion Sinistres
+  adrs: []
+- id: CAP.BSP.DLC.000
+  name: Détection & lutte contre la fraude
+  level: L2
+  parent: CAP.BSP.005
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Scoring, alertes, investigations.
+  owner: Antifraude
+  adrs: []
+- id: CAP.BSP.CAD.000
+  name: Clôture & archivage du dossier
+  level: L2
+  parent: CAP.BSP.005
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Clôture administrative, archivage, traçabilité.
+  owner: Gestion Sinistres / Prestations
+  adrs: []
+- id: CAP.BSP.PRS.000
+  name: Pilotage & reporting des sinistres
+  level: L2
+  parent: CAP.BSP.005
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Indicateurs, tableaux de bord, analyse coûts et délais.
+  owner: Gestion Sinistres / Prestations
+  adrs: []
+- id: CAP.BSP.AOQ.000
+  name: Accueil, orientation & qualification des demandes
+  level: L2
+  parent: CAP.BSP.PRS.000
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Prise en charge multicanale, qualification/catégorisation, orientation front/back.
+  owner: Service Client
+  adrs: []
+- id: CAP.BSP.TDA.000
+  name: Traitement des demandes & actes de service
+  level: L2
+  parent: CAP.BSP.PRS.000
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Demandes courantes et complexes, suivi SLA, coordination (souvent BPM/GED).
+  owner: Service Client
+  adrs: []
+- id: CAP.BSP.RLM.000
+  name: Réclamations, litiges & médiation
+  level: L2
+  parent: CAP.BSP.PRS.000
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Traitement opérationnel des réclamations/litiges et médiation (gouvernance côté Conformité).
+  owner: Service Client
+  adrs: []
+- id: CAP.BSP.AAS.000
+  name: Assistance & accompagnement sociétaire
+  level: L2
+  parent: CAP.BSP.PRS.000
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Assistance santé/prévoyance, accompagnement, coordination partenaires (réseaux de soins…).
+  owner: Service Client
+  adrs: []
+- id: CAP.BSP.CÉC.000
+  name: Calcul & émission des cotisations
+  level: L2
+  parent: CAP.BSP.007
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Calcul montants, prise en compte mouvements contractuels, émission appels/échéanciers.
+  owner: Gestion Cotisations
+  adrs: []
+- id: CAP.BSP.ENR.000
+  name: Encaissement & rapprochement
+  level: L2
+  parent: CAP.BSP.007
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Paiements, traitement rejets/impayés, rapprochement et affectation aux contrats.
+  owner: Gestion Cotisations
+  adrs: []
+- id: CAP.BSP.REC.000
+  name: Recouvrement & contentieux
+  level: L2
+  parent: CAP.BSP.007
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Relances, plans de recouvrement, suspensions/résiliations (lien contrats), contentieux.
+  owner: Recouvrement
+  adrs: []
+- id: CAP.BSP.PFP.000
+  name: Pilotage financier & performance économique
+  level: L2
+  parent: CAP.BSP.008
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Suivi S/P, marge technique, frais de gestion, rentabilité, budgets/forecasts.
+  owner: Finance
+  adrs: []
+- id: CAP.BSP.APÉ.000
+  name: Actuariat, provisions & équilibres techniques
+  level: L2
+  parent: CAP.BSP.008
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Provisions techniques, hypothèses/modèles, analyse sinistralité/consommation, inputs pricing.
+  owner: Actuariat
+  adrs: []
+- id: CAP.BSP.PRR.000
+  name: Prudentiel & reporting réglementaire
+  level: L2
+  parent: CAP.BSP.008
+  zoning: BUSINESS SERVICE PRODUCTION
+  description: Solvabilité/fonds propres (selon cadre), reporting prudentiel, états réglementaires et justificatifs.
+  owner: Finance / Conformité
+  adrs: []

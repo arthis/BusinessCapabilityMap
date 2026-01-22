@@ -1,0 +1,7 @@
+mappings:
+  - capability_id: CAP.CUST.010
+    applications: ["CIAM", "IAM"]
+  - capability_id: CAP.CUST.020
+    applications: ["CRM", "CDP"]
+  - capability_id: CAP.ORD.010
+    applications: ["Order Capture Portal"]
