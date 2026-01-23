@@ -1,0 +1,32 @@
+digraph EventsBCM {
+  graph [rankdir="LR", compound=true, fontsize=10];
+  node  [fontsize=10];
+  edge  [fontsize=9];
+  subgraph cluster_CAP_BSP_004 {
+    style="rounded";
+    label="Administration des Contrats\n(CAP.BSP.004)";
+    "CAP_BSP_004" [shape="box", penwidth=2];
+  }
+  subgraph cluster_CAP_BSP_005 {
+    style="rounded";
+    label="Sinistres & Prestations\n(CAP.BSP.005)";
+    "CAP_BSP_005" [shape="box", penwidth=2];
+    "CAP_BSP_DSP_000" [shape="box", label="Déclaration du sinistre / de la prestation\n(CAP.BSP.DSP.000)"];
+    "CAP_BSP_005" -> "CAP_BSP_DSP_000" [style="dashed", arrowhead="none"];
+    "CAP_BSP_OED_000" [shape="box", label="Ouverture & Enregistrement du dossier\n(CAP.BSP.OED.000)"];
+    "CAP_BSP_005" -> "CAP_BSP_OED_000" [style="dashed", arrowhead="none"];
+  }
+  subgraph cluster_CAP_BSP_006 {
+    style="rounded";
+    label="Interaction & Service Client\n(CAP.BSP.006)";
+    "CAP_BSP_006" [shape="box", penwidth=2];
+  }
+  "EVT_DossierSinistreOuvert" [shape="ellipse", label="DossierSinistreOuvert"];
+  "CAP_BSP_OED_000" -> "EVT_DossierSinistreOuvert" [label="produit"];
+  "SUB_ContratÉmis" [shape="ellipse", label="ContratÉmis\n(subscription)"];
+  "CAP_BSP_004" -> "SUB_ContratÉmis" [label="produit"];
+  "SUB_ContratÉmis" -> "CAP_BSP_OED_000" [label="consommé"];
+  "SUB_DemandeClientQualifiée" [shape="ellipse", label="DemandeClientQualifiée\n(subscription)"];
+  "CAP_BSP_006" -> "SUB_DemandeClientQualifiée" [label="produit"];
+  "SUB_DemandeClientQualifiée" -> "CAP_BSP_OED_000" [label="consommé"];
+}

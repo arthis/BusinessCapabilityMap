@@ -1,0 +1,535 @@
+meta:
+  scope:
+    l1_focus:
+      id: "CAP.BSP.005"
+      name: "Sinistres & Prestations"
+    restriction:
+      - "Événements et objets métier renommés uniquement en français."
+      - "On reste STRICTEMENT sur les capacités L2 rattachées à CAP.BSP.005."
+      - "Pour les événements PRODUITS par CAP.BSP.005 : on indique la L2 émettrice (emitted_by_l2)."
+      - "Pour les SUBSCRIPTIONS : on indique les L2 consommatrices côté Sinistres (handled_by_l2)."
+  naming_convention:
+    - "Nom d’événement : passé composé / participe passé (fait métier accompli)."
+    - "Objet métier : nom commun au singulier."
+  note:
+    - "Les IDs restent inchangés (source BCM)."
+
+glossary:
+  - term: "Subscription"
+    definition: "Abonnement d’une capacité à un événement produit par une autre capacité."
+  - term: "L2 émettrice"
+    definition: "Sous-capacité L2 de Sinistres & Prestations responsable de l’émission d’un événement."
+  - term: "L2 consommatrice"
+    definition: "Sous-capacité L2 de Sinistres & Prestations responsable du traitement d’un événement entrant."
+  - term: "Indemnisation"
+    definition: "Versement financier effectué au titre d’un sinistre accepté."
+
+bcm_reference:
+  l1_focus:
+    id: "CAP.BSP.005"
+    name: "Sinistres & Prestations"
+  l2_children:
+    - id: "CAP.BSP.DSP.000"
+      name: "Déclaration du sinistre / de la prestation"
+    - id: "CAP.BSP.OED.000"
+      name: "Ouverture & Enregistrement du dossier"
+    - id: "CAP.BSP.IND.000"
+      name: "Instruction du dossier"
+    - id: "CAP.BSP.EDP.000"
+      name: "Évaluation des dommages / prestations"
+    - id: "CAP.BSP.INR.000"
+      name: "Indemnisation / Règlement"
+    - id: "CAP.BSP.PTP.000"
+      name: "Pilotage des tiers & prestataires"
+    - id: "CAP.BSP.RES.000"
+      name: "Recours & subrogation"
+    - id: "CAP.BSP.DLC.000"
+      name: "Détection & lutte contre la fraude"
+    - id: "CAP.BSP.CAD.000"
+      name: "Clôture & archivage du dossier"
+    - id: "CAP.BSP.PRS.000"
+      name: "Pilotage & reporting des sinistres"
+
+event_contracts:
+
+  produced_by_claims:
+    producer_l1:
+      id: "CAP.BSP.005"
+      name: "Sinistres & Prestations"
+
+    events:
+
+      - name: "SinistreDéclaré"
+        definition: "Un sinistre a été déclaré et enregistré (création de l’événement initial de gestion)."
+        emitted_by_l2:
+          id: "CAP.BSP.DSP.000"
+          name: "Déclaration du sinistre / de la prestation"
+        business_object:
+          name: "Sinistre"
+          definition: "Objet représentant un sinistre déclaré rattaché à une police/contrat."
+          properties:
+            - name: "identifiantSinistre"
+              type: "string"
+            - name: "identifiantContrat"
+              type: "string"
+            - name: "typeSinistre"
+              type: "string"
+            - name: "dateSurvenance"
+              type: "date"
+            - name: "dateDeclaration"
+              type: "datetime"
+            - name: "statut"
+              type: "string"
+
+      - name: "DossierSinistreOuvert"
+        definition: "Le dossier sinistre est officiellement ouvert (cycle de vie initialisé) et prêt pour instruction."
+        emitted_by_l2:
+          id: "CAP.BSP.OED.000"
+          name: "Ouverture & Enregistrement du dossier"
+        business_object:
+          name: "DossierSinistre"
+          definition: "Dossier sinistre structuré (case), support des pièces, décisions et tâches."
+          properties:
+            - name: "identifiantDossierSinistre"
+              type: "string"
+            - name: "identifiantSinistre"
+              type: "string"
+            - name: "dateOuverture"
+              type: "datetime"
+            - name: "statutDossier"
+              type: "string"
+
+      - name: "SinistreÉvalué"
+        definition: "Une évaluation des dommages / prestations a été réalisée et validée comme base de décision."
+        emitted_by_l2:
+          id: "CAP.BSP.EDP.000"
+          name: "Évaluation des dommages / prestations"
+        business_object:
+          name: "ÉvaluationSinistre"
+          definition: "Évaluation structurée d’un sinistre (montants, conclusions, pièces)."
+          properties:
+            - name: "identifiantEvaluation"
+              type: "string"
+            - name: "identifiantSinistre"
+              type: "string"
+            - name: "typeEvaluation"
+              type: "string" # DOMMAGE|MÉDICAL|RESPONSABILITÉ|AUTRE
+            - name: "dateEvaluation"
+              type: "datetime"
+            - name: "montantÉvalué"
+              type: "number"
+            - name: "devise"
+              type: "string"
+
+      - name: "DécisionSinistreRendue"
+        definition: "Une décision métier a été rendue sur le sinistre (acceptation/refus/partiel)."
+        emitted_by_l2:
+          id: "CAP.BSP.IND.000"
+          name: "Instruction du dossier"
+        business_object:
+          name: "DécisionSinistre"
+          definition: "Décision structurée sur sinistre et justification."
+          properties:
+            - name: "identifiantSinistre"
+              type: "string"
+            - name: "identifiantDécision"
+              type: "string"
+            - name: "décision"
+              type: "string" # ACCEPTÉ|REFUSÉ|PARTIEL
+            - name: "dateDécision"
+              type: "datetime"
+            - name: "motifDécision"
+              type: "string"
+
+      - name: "IndemnisationAutorisée"
+        definition: "Une indemnisation (paiement) a été autorisée suite à décision et contrôles."
+        emitted_by_l2:
+          id: "CAP.BSP.INR.000"
+          name: "Indemnisation / Règlement"
+        business_object:
+          name: "AutorisationIndemnisation"
+          definition: "Autorisation de paiement d’indemnisation, distincte du paiement effectif."
+          properties:
+            - name: "identifiantAutorisation"
+              type: "string"
+            - name: "identifiantSinistre"
+              type: "string"
+            - name: "dateAutorisation"
+              type: "datetime"
+            - name: "montant"
+              type: "number"
+            - name: "devise"
+              type: "string"
+
+      - name: "IndemnisationVersée"
+        definition: "Une prestation/indemnisation a été payée au titre d’un sinistre."
+        emitted_by_l2:
+          id: "CAP.BSP.INR.000"
+          name: "Indemnisation / Règlement"
+        business_object:
+          name: "PaiementIndemnisation"
+          definition: "Paiement effectué au bénéfice d’un assuré/bénéficiaire suite à un sinistre."
+          properties:
+            - name: "identifiantPaiement"
+              type: "string"
+            - name: "identifiantSinistre"
+              type: "string"
+            - name: "datePaiement"
+              type: "datetime"
+            - name: "montant"
+              type: "number"
+            - name: "devise"
+              type: "string"
+
+      - name: "RecoursInitie"
+        definition: "Un dossier de recours/subrogation a été initié suite à un sinistre impliquant un tiers."
+        emitted_by_l2:
+          id: "CAP.BSP.RES.000"
+          name: "Recours & subrogation"
+        business_object:
+          name: "DossierRecours"
+          definition: "Dossier de recours permettant de récupérer des montants auprès d’un tiers responsable."
+          properties:
+            - name: "identifiantDossierRecours"
+              type: "string"
+            - name: "identifiantSinistre"
+              type: "string"
+            - name: "dateInitiation"
+              type: "datetime"
+            - name: "identifiantTiers"
+              type: "string"
+            - name: "montantRecouvrableEstime"
+              type: "number"
+
+      - name: "FraudeSuspectéeSurSinistre"
+        definition: "Un soupçon de fraude a été identifié sur un dossier sinistre."
+        emitted_by_l2:
+          id: "CAP.BSP.DLC.000"
+          name: "Détection & lutte contre la fraude"
+        business_object:
+          name: "SuspicionFraude"
+          definition: "Signal structuré de suspicion de fraude sur sinistre."
+          properties:
+            - name: "identifiantDossierFraude"
+              type: "string"
+            - name: "identifiantSinistre"
+              type: "string"
+            - name: "dateSuspicion"
+              type: "datetime"
+            - name: "typeFraude"
+              type: "string"
+            - name: "criticité"
+              type: "string" # FAIBLE|MOYENNE|ÉLEVÉE|CRITIQUE
+
+      - name: "DossierSinistreClôturé"
+        definition: "Le dossier sinistre a été clôturé administrativement et métier."
+        emitted_by_l2:
+          id: "CAP.BSP.CAD.000"
+          name: "Clôture & archivage du dossier"
+        business_object:
+          name: "ClôtureSinistre"
+          definition: "Clôture finale du dossier sinistre (motif, date, statut final)."
+          properties:
+            - name: "identifiantSinistre"
+              type: "string"
+            - name: "dateClôture"
+              type: "datetime"
+            - name: "motifClôture"
+              type: "string"
+            - name: "statutFinal"
+              type: "string"
+
+  subscriptions_handled_by_claims:
+    subscriber_l1:
+      id: "CAP.BSP.005"
+      name: "Sinistres & Prestations"
+
+    subscriptions_by_producer_l1:
+
+      - producer_l1:
+          id: "CAP.BSP.001"
+          name: "Produits & Tarification"
+        events:
+          - name: "ProduitAssurancePublié"
+            definition: "Publication d’une version produit et activation de son usage."
+            handled_by_l2:
+              - id: "CAP.BSP.DSP.000"
+                name: "Déclaration du sinistre / de la prestation"
+              - id: "CAP.BSP.IND.000"
+                name: "Instruction du dossier"
+            business_object:
+              name: "ProduitAssurance"
+              definition: "Produit versionné et gouverné, avec date d’effet."
+              properties:
+                - name: "identifiantProduit"
+                  type: "string"
+                - name: "version"
+                  type: "string"
+                - name: "dateEffet"
+                  type: "date"
+                - name: "datePublication"
+                  type: "datetime"
+
+          - name: "RègleTarificationPubliée"
+            definition: "Publication d’une règle de tarification applicable."
+            handled_by_l2:
+              - id: "CAP.BSP.PRS.000"
+                name: "Pilotage & reporting des sinistres"
+            business_object:
+              name: "RègleTarification"
+              definition: "Règle versionnée de prime (segments/paramètres)."
+              properties:
+                - name: "identifiantRègleTarification"
+                  type: "string"
+                - name: "identifiantProduit"
+                  type: "string"
+                - name: "dateEffet"
+                  type: "date"
+                - name: "datePublication"
+                  type: "datetime"
+
+          - name: "RègleSouscriptionPubliée"
+            definition: "Publication d’une règle de souscription/acceptation."
+            handled_by_l2:
+              - id: "CAP.BSP.DSP.000"
+                name: "Déclaration du sinistre / de la prestation"
+            business_object:
+              name: "RègleSouscription"
+              definition: "Règle décisionnelle versionnée impactant l’éligibilité et certaines exclusions."
+              properties:
+                - name: "identifiantRègleSouscription"
+                  type: "string"
+                - name: "identifiantProduit"
+                  type: "string"
+                - name: "dateEffet"
+                  type: "date"
+                - name: "datePublication"
+                  type: "datetime"
+
+      - producer_l1:
+          id: "CAP.BSP.002"
+          name: "Canaux & Intermédiation"
+        events:
+          - name: "IntermédiaireRéférencé"
+            definition: "Un intermédiaire a été référencé."
+            handled_by_l2:
+              - id: "CAP.BSP.IND.000"
+                name: "Instruction du dossier"
+            business_object:
+              name: "Intermédiaire"
+              definition: "Intermédiaire de distribution (identité, type, statut)."
+              properties:
+                - name: "identifiantIntermédiaire"
+                  type: "string"
+                - name: "typeIntermédiaire"
+                  type: "string"
+                - name: "statut"
+                  type: "string"
+                - name: "dateRéférencement"
+                  type: "datetime"
+
+          - name: "ConventionIntermédiationActivée"
+            definition: "Convention d’intermédiation activée."
+            handled_by_l2:
+              - id: "CAP.BSP.PRS.000"
+                name: "Pilotage & reporting des sinistres"
+            business_object:
+              name: "ConventionIntermédiation"
+              definition: "Convention intermédiation avec périmètre et dates."
+              properties:
+                - name: "identifiantConvention"
+                  type: "string"
+                - name: "identifiantIntermédiaire"
+                  type: "string"
+                - name: "dateEffet"
+                  type: "date"
+                - name: "dateActivation"
+                  type: "datetime"
+                - name: "périmètre"
+                  type: "string"
+
+      - producer_l1:
+          id: "CAP.BSP.003"
+          name: "Souscription & Acceptation du Risque"
+        events:
+          - name: "DevisÉmis"
+            definition: "Un devis a été émis (prime + conditions) et devient une référence."
+            handled_by_l2:
+              - id: "CAP.BSP.DLC.000"
+                name: "Détection & lutte contre la fraude"
+            business_object:
+              name: "Devis"
+              definition: "Devis d’assurance lié au risque, produit, prime, validité."
+              properties:
+                - name: "identifiantDevis"
+                  type: "string"
+                - name: "identifiantProduit"
+                  type: "string"
+                - name: "montantPrime"
+                  type: "number"
+                - name: "dateEmission"
+                  type: "datetime"
+
+          - name: "DécisionSouscriptionRendue"
+            definition: "Une décision de souscription a été rendue."
+            handled_by_l2:
+              - id: "CAP.BSP.DSP.000"
+                name: "Déclaration du sinistre / de la prestation"
+              - id: "CAP.BSP.IND.000"
+                name: "Instruction du dossier"
+            business_object:
+              name: "DécisionSouscription"
+              definition: "Décision acceptation/refus/conditions sur un dossier de souscription."
+              properties:
+                - name: "identifiantDossierSouscription"
+                  type: "string"
+                - name: "identifiantDevis"
+                  type: "string"
+                - name: "décision"
+                  type: "string"
+                - name: "dateDécision"
+                  type: "datetime"
+
+      - producer_l1:
+          id: "CAP.BSP.004"
+          name: "Administration des Contrats"
+        events:
+          - name: "ContratÉmis"
+            definition: "Contrat émis."
+            handled_by_l2:
+              - id: "CAP.BSP.DSP.000"
+                name: "Déclaration du sinistre / de la prestation"
+              - id: "CAP.BSP.OED.000"
+                name: "Ouverture & Enregistrement du dossier"
+            business_object:
+              name: "ContratAssurance"
+              definition: "Police/contrat actif avec ses dates et statut."
+              properties:
+                - name: "identifiantContrat"
+                  type: "string"
+                - name: "numéroContrat"
+                  type: "string"
+                - name: "dateEffet"
+                  type: "date"
+                - name: "dateEmission"
+                  type: "datetime"
+                - name: "statut"
+                  type: "string"
+
+          - name: "ContratModifié"
+            definition: "Contrat modifié."
+            handled_by_l2:
+              - id: "CAP.BSP.IND.000"
+                name: "Instruction du dossier"
+              - id: "CAP.BSP.EDP.000"
+                name: "Évaluation des dommages / prestations"
+            business_object:
+              name: "AvenantContrat"
+              definition: "Avenant : changement des garanties/options/statut."
+              properties:
+                - name: "identifiantContrat"
+                  type: "string"
+                - name: "identifiantAvenant"
+                  type: "string"
+                - name: "typeModification"
+                  type: "string"
+                - name: "dateEffet"
+                  type: "date"
+                - name: "dateModification"
+                  type: "datetime"
+
+          - name: "ContratRésilié"
+            definition: "Contrat résilié."
+            handled_by_l2:
+              - id: "CAP.BSP.IND.000"
+                name: "Instruction du dossier"
+            business_object:
+              name: "RésiliationContrat"
+              definition: "Résiliation du contrat (date/motif)."
+              properties:
+                - name: "identifiantContrat"
+                  type: "string"
+                - name: "dateFin"
+                  type: "date"
+                - name: "dateRésiliation"
+                  type: "datetime"
+                - name: "motif"
+                  type: "string"
+
+      - producer_l1:
+          id: "CAP.BSP.006"
+          name: "Interaction & Service Client"
+        events:
+          - name: "DemandeClientQualifiée"
+            definition: "Demande client qualifiée."
+            handled_by_l2:
+              - id: "CAP.BSP.DSP.000"
+                name: "Déclaration du sinistre / de la prestation"
+              - id: "CAP.BSP.OED.000"
+                name: "Ouverture & Enregistrement du dossier"
+            business_object:
+              name: "DemandeClient"
+              definition: "Demande rattachée à un objet métier (contrat/sinistre/cotisation)."
+              properties:
+                - name: "identifiantDemande"
+                  type: "string"
+                - name: "identifiantClient"
+                  type: "string"
+                - name: "dateQualification"
+                  type: "datetime"
+                - name: "typeObjetLié"
+                  type: "string"
+                - name: "identifiantObjetLié"
+                  type: "string"
+
+      - producer_l1:
+          id: "CAP.BSP.007"
+          name: "Cotisations & Recouvrement"
+        events:
+          - name: "ImpayéDétecté"
+            definition: "Impayé détecté."
+            handled_by_l2:
+              - id: "CAP.BSP.IND.000"
+                name: "Instruction du dossier"
+            business_object:
+              name: "Impayé"
+              definition: "Impayé sur contrat lié à une échéance/facture."
+              properties:
+                - name: "identifiantImpayé"
+                  type: "string"
+                - name: "identifiantContrat"
+                  type: "string"
+                - name: "identifiantFacture"
+                  type: "string"
+                - name: "dateEcheance"
+                  type: "date"
+                - name: "dateDétection"
+                  type: "datetime"
+                - name: "statut"
+                  type: "string"
+
+      - producer_l1:
+          id: "CAP.BSP.008"
+          name: "Finance & Actuariat"
+        events:
+          - name: "ProvisionTechniqueMiseÀJour"
+            definition: "Provision technique recalculée."
+            handled_by_l2:
+              - id: "CAP.BSP.PRS.000"
+                name: "Pilotage & reporting des sinistres"
+            business_object:
+              name: "ProvisionTechnique"
+              definition: "Montant de provision technique calculé sur un périmètre."
+              properties:
+                - name: "identifiantProvision"
+                  type: "string"
+                - name: "périmètre"
+                  type: "string"
+                - name: "montant"
+                  type: "number"
+                - name: "devise"
+                  type: "string"
+                - name: "méthode"
+                  type: "string"
+                - name: "dateCalcul"
+                  type: "datetime"

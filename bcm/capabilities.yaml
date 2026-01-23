@@ -187,7 +187,7 @@ capabilities:
   level: L1
   zoning: B2B EXCHANGE
   description: Référencement partenaires, habilitations B2B, SLA, conventions et responsabilités.
-  owner: Écosystème / Partenariats
+  owner: Ecosystème / Partenariats
   adrs: []
 - id: CAP.B2B.002
   name: Hub d'échanges partenaires
@@ -204,35 +204,35 @@ capabilities:
   owner: API Management
   adrs: []
 - id: CAP.B2B.004
-  name: Échanges délégataires
+  name: Echanges délégataires
   level: L1
   zoning: B2B EXCHANGE
   description: Délégation sinistres/prestations/cotisations, contrôles, reporting et réversibilité.
-  owner: Écosystème / Délégations
+  owner: Ecosystème / Délégations
   adrs: []
 - id: CAP.B2B.005
-  name: Échanges santé / tiers payant
+  name: Echanges santé / tiers payant
   level: L1
   zoning: B2B EXCHANGE
   description: PEC, factures, remboursements, flux normalisés (NOEMIE si applicable).
   owner: Santé / Partenariats
   adrs: []
 - id: CAP.B2B.006
-  name: Échanges intermédiation
+  name: Echanges intermédiation
   level: L1
   zoning: B2B EXCHANGE
   description: Devis, souscriptions, avenants, commissions et suivi portefeuille via partenaires.
   owner: Distribution / Partenariats
   adrs: []
 - id: CAP.B2B.007
-  name: Échanges financiers
+  name: Echanges financiers
   level: L1
   zoning: B2B EXCHANGE
   description: Banques (SEPA, rejets, mandats), paiements et rapprochements.
   owner: Finance / Paiements
   adrs: []
 - id: CAP.B2B.008
-  name: Échanges réglementaires
+  name: Echanges réglementaires
   level: L1
   zoning: B2B EXCHANGE
   description: Dépôts, déclaratifs, preuves d’audit et supervision selon obligations.
@@ -243,7 +243,7 @@ capabilities:
   level: L1
   zoning: B2B EXCHANGE
   description: Journalisation, preuve, horodatage, conformité des échanges, chiffrement, signature.
-  owner: RSSI / Écosystème
+  owner: RSSI / Ecosystème
   adrs: []
 - id: CAP.CHN.001
   name: Expérience omnicanale & parcours
@@ -575,8 +575,8 @@ capabilities:
   description: Recueil du besoin, qualification contexte, complétude initiale du dossier.
   owner: Souscription
   adrs: []
-- id: CAP.BSP.ÉVR.000
-  name: Évaluation du risque
+- id: CAP.BSP.EVR.000
+  name: Evaluation du risque
   level: L2
   parent: CAP.BSP.003
   zoning: BUSINESS SERVICE PRODUCTION
@@ -591,7 +591,7 @@ capabilities:
   description: Application règles tarifaires, simulations, remises/conditions commerciales (consomme référentiel produit).
   owner: Souscription / Actuariat
   adrs: []
-- id: CAP.BSP.DÉS.000
+- id: CAP.BSP.DES.000
   name: Décision de souscription
   level: L2
   parent: CAP.BSP.003
@@ -615,12 +615,12 @@ capabilities:
   description: Contrôles cohérence, anti-fraude à l’entrée, conformité (KYC/LCB-FT si applicable, RGPD).
   owner: Souscription / Conformité
   adrs: []
-- id: CAP.BSP.ÉMV.000
-  name: Émission & mise en vigueur du contrat
+- id: CAP.BSP.EMV.000
+  name: Emission & mise en vigueur du contrat
   level: L2
   parent: CAP.BSP.004
   zoning: BUSINESS SERVICE PRODUCTION
-  description: Émission/activation, prise d’effet, documents contractuels initiaux.
+  description: Emission/activation, prise d’effet, documents contractuels initiaux.
   owner: Gestion Contrats
   adrs: []
 - id: CAP.BSP.TEC.000
@@ -687,8 +687,8 @@ capabilities:
   description: Analyse garanties, vérification droits, collecte pièces, décisions intermédiaires.
   owner: Gestion Sinistres / Prestations
   adrs: []
-- id: CAP.BSP.ÉDP.000
-  name: Évaluation des dommages / prestations
+- id: CAP.BSP.EDP.000
+  name: Evaluation des dommages / prestations
   level: L2
   parent: CAP.BSP.005
   zoning: BUSINESS SERVICE PRODUCTION
@@ -775,7 +775,7 @@ capabilities:
   description: Assistance santé/prévoyance, accompagnement, coordination partenaires (réseaux de soins…).
   owner: Service Client
   adrs: []
-- id: CAP.BSP.CÉC.000
+- id: CAP.BSP.CEC.000
   name: Calcul & émission des cotisations
   level: L2
   parent: CAP.BSP.007
@@ -807,7 +807,7 @@ capabilities:
   description: Suivi S/P, marge technique, frais de gestion, rentabilité, budgets/forecasts.
   owner: Finance
   adrs: []
-- id: CAP.BSP.APÉ.000
+- id: CAP.BSP.APE.000
   name: Actuariat, provisions & équilibres techniques
   level: L2
   parent: CAP.BSP.008
